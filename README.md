@@ -9,7 +9,7 @@ JERRARI Zineb
 # Contexte du Jeu :
 ![image](https://user-images.githubusercontent.com/101091885/218343695-ede15831-6ad6-47ae-b2cd-2733d03aaf47.png)
 It's you against the enemy, good luck on surviving!
-Le but de ce jeu est de survivre à la menace des zombies et de du chevalier ennemi tout en récupérant les lanternes magiques de l'empereur afin de rompre la malédiction des zombies.
+Le but de ce jeu est de survivre à la menace des zombies et du chevalier ennemi tout en récupérant les lanternes magiques de l'empereur afin de rompre la malédiction des zombies.
 A votre tour d'essayer de vous surpasser pour réaliser le perfect score.
 
 
