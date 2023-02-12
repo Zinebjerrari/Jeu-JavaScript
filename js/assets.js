@@ -9,7 +9,8 @@ let assetsToLoadURLs = {
     bgn1: { url: '../assets/images/background.png' }, // http://www.clipartlord.com/category/weather-clip-art/winter-clip-art/
     bgn2: { url: '../assets/images/background3.png' },
     bgn3: { url: '../assets/images/background2.png' },
-    bgn4: { url: '../assets/images/background1.png' },   
+    bgn4: { url: '../assets/images/background1.png' }, 
+    end: { url: '../assets/images/winner.png' },
     zombie: { url:'../assets/images/zombie.png'},
     zombie1: { url:'../assets/images/zombie1.png'},
     

@@ -6,12 +6,10 @@ import ObstacleTexture from './ObstacleTexture.js';
 import { ajouteEcouteurSouris, ajouteEcouteursClavier, inputState, mousePos } from './ecouteurs.js';
 import { circRectsOverlap, rectsOverlap } from './collisions.js';
 import { loadAssets } from './assets.js';
-import SpriteCasseBrique from './SpriteCasseBrique.js';
 import Sortie from './Sortie.js';
 import Coin from './Coin.js';
 
 import { creerLesNiveaux, tabNiveaux } from './levels.js';
-import Brick from './Brick.js';
 import Timer from './Timer.js';
 import Ennemi from './Ennemi.js';
 import Zombie from './zombie.js';
@@ -33,8 +31,7 @@ let hicores = [
     { nom: "Tutu", score: 700 },
 ];
 let tableauDesObjetsGraphiques = [];
-let spritesheetCB;
-let briqueBleue1;
+
 
 
 
@@ -127,7 +124,7 @@ function demarreNiveau(niveau) {
 }
 
 function creerDesObstaclesLevel1() {
-    tableauDesObjetsGraphiques.push(new Obstacle(250, 0, 30, 300, 'green'));
+    //tableauDesObjetsGraphiques.push(new Obstacle(250, 0, 30, 300, 'green'));
     //tableauDesObjetsGraphiques.push(new ObstacleAnime(450, 0, 30, 300, 'green', 1));
     //tableauDesObjetsGraphiques.push(new ObstacleAnimeClignotant(350, 0, 30, 300, 'red', 1));
     let url = 'https://img.freepik.com/free-vector/seamless-japanese-inspired-geometric-pattern_53876-80353.jpg';
@@ -158,7 +155,6 @@ function animationLoop() {
         case 'menuStart':
             afficheMenuStart(ctx);
 
-            //ctx.draw(fond, fond1, fond2, fond3)
             break;
         case 'gameOver':
             afficheGameOver(ctx);
@@ -166,9 +162,9 @@ function animationLoop() {
         case 'ecranDebutNiveau':
             afficheEcranDebutNiveau(ctx);
             break;
-            
-        case 'fin':
-            afficheEnd(ctx);
+
+        case 'fin' :
+            afficheFin(ctx);
             break;
 
         case 'jeuEnCours':
@@ -302,6 +298,8 @@ function afficheGameOver(ctx) {
     ctx.font = "40px Arial";
     ctx.fillText("Reload the page to play again !", 150, 300);
     ctx.strokeText("Reload the page to play again !", 150, 300);
+
+    
     if (inputState.space) {
         gameState = 'gameOver';
         joueur.x = 0;
@@ -312,14 +310,22 @@ function afficheGameOver(ctx) {
 
 }
 
-function afficheEnd(ctx) {
+var fin = new Image();
+fin.src = "../assets/images/winner.png";
+function afficheFin(ctx){
     ctx.save();
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'white';
     ctx.font = "70px Arial";
-    ctx.fillText("Congrats ! You won !", 180, 100);
-    ctx.strokeText("Congrats ! You won !", 180, 100);
+    ctx.fillText("Congrats!", 180, 100);
+    ctx.strokeText("Congrats!", 180, 100);
+
+    ctx.drawImage(fin, 0, 0, 1000, 580);
+
+    if (inputState.space) {
+        gameState = 'fin';
+    }
     ctx.restore();
 }
 
@@ -431,11 +437,20 @@ function detecteCollisionJoueurAvecSortie() {
     if (circRectsOverlap(joueur.x, joueur.y, joueur.l, joueur.h, sortie.x, sortie.y, sortie.r)) {
         joueur.x = 10;
         joueur.y = 10;
+        if (niveau < 5){
+           //gameState = 'ecranDebutNiveau';
+            niveauSuivant();
+            //sortie.couleur = 'lightgreen';
+            assets.victory.play(); 
+        }
+        else{
         //gameState = 'ecranDebutNiveau';
-        niveauSuivant();
-        sortie.couleur = 'lightgreen';
+        //niveauSuivant();
+        //sortie.couleur = 'lightgreen';
         assets.victory.play();
     }
+        }
+
 }
 
 function detecteCollisionJoueurAvecEnnemi() {

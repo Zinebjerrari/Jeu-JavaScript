@@ -10,7 +10,7 @@ import Zombie from "./zombie.js";
 let tabNiveaux = [];
 
 function creerLesNiveaux(assets) {
-    let sortieLevel1 = new Sortie(500, 500, 50, "yellow");
+    let sortieLevel1 = new Sortie(500, 500, 50, "green");
 
     let level1 = {
         objetsGraphiques: [
@@ -29,7 +29,7 @@ function creerLesNiveaux(assets) {
     }
     tabNiveaux.push(level1);
     
-    let sortieLevel2 = new Sortie(600, 300, 40, "orange");
+    let sortieLevel2 = new Sortie(600, 300, 40, "yellow");
     let level2 = {
         objetsGraphiques: [
             sortieLevel2,
@@ -46,7 +46,7 @@ function creerLesNiveaux(assets) {
     }
     tabNiveaux.push(level2);
 
-    let sortieLevel3 = new Sortie(600, 300, 40, "orange");
+    let sortieLevel3 = new Sortie(600, 300, 40, "red");
 let level3 = {
     objetsGraphiques: [
         sortieLevel3,
@@ -66,7 +66,7 @@ let level3 = {
 }
 tabNiveaux.push(level3);
 
-let sortieLevel4 = new Sortie(600, 300, 40, "orange");
+let sortieLevel4 = new Sortie(600, 300, 40, "pink");
 let level4 = {
     objetsGraphiques: [
         sortieLevel4,
@@ -87,5 +87,18 @@ let level4 = {
     musique: "humbug"
 }
 tabNiveaux.push(level4);
+
+let level5 = {
+    objetsGraphiques: [
+        
+    ],
+    temps: 30,
+    titre : "Niveau 5",
+    description: "Ne te laisse pas faire !",
+    background: "end",
+    musique: "humbug"
+}
+tabNiveaux.push(level5);
+
 }
 export { creerLesNiveaux, tabNiveaux }
