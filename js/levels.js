@@ -4,6 +4,8 @@ import ObstacleAnime from "./ObstacleAnime.js";
 import Obstacle from "./ObstacleClass.js";
 import ObstacleTexture from "./ObstacleTexture.js";
 import Coin from "./Coin.js";
+import Ennemi from "./Ennemi.js";
+import Zombie from "./zombie.js";
 
 let tabNiveaux = [];
 
@@ -68,7 +70,9 @@ let sortieLevel4 = new Sortie(600, 300, 40, "orange");
 let level4 = {
     objetsGraphiques: [
         sortieLevel4,
-        new ObstacleAnime(450, 0, 30, 300, 'orange', 1),
+        new ObstacleAnime(150, 0, 30, 300, 'purple', 1),
+        new ObstacleAnime(380, 0, 30, 300, 'black', 1),
+        new ObstacleAnime(670, 0, 30, 300, 'pink', 1),
         new Coin(100, 250, 50, 50, assets.coin, 10),
         new Coin(320, 250, 50, 50, assets.coin, 10),
         new Coin(460, 380, 50, 50, assets.coin, 10),

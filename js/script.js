@@ -109,10 +109,10 @@ function demarreNiveau(niveau) {
     // courant avec les objets graphiques dans tabNiveaux[niveau]   
     tableauDesObjetsGraphiques = [...tabNiveaux[niveau].objetsGraphiques];
     // On crée le joueur   
-    joueur = new Joueur(100, 0, 50, 50, assets.joueur, 3);
+    joueur = new Joueur(100, 0, 70, 70, assets.joueur, 3);
     ennemi = new Ennemi(580, 350, 100, 100, assets.ennemi,1);
-    zombie = new Zombie(580, 350, 100, 100, assets.zombie,2);
-    zombie1 = new Zombie(380, 150, 100, 100, assets.zombie1,2);
+    zombie = new Zombie(580, 350, 100, 100, assets.zombie,1);
+    zombie1 = new Zombie(380, 150, 100, 100, assets.zombie1,1);
     sortie = tabNiveaux[niveau].sortie;
     // et on l'ajoute au tableau des objets graphiques
     tableauDesObjetsGraphiques.push(joueur);
@@ -166,6 +166,11 @@ function animationLoop() {
         case 'ecranDebutNiveau':
             afficheEcranDebutNiveau(ctx);
             break;
+            
+        case 'fin':
+            afficheEnd(ctx);
+            break;
+
         case 'jeuEnCours':
             //ximg++;
             //ximg = ximg % canvas.width;
@@ -265,8 +270,8 @@ function afficheMenuStart(ctx) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'white';
     ctx.font = "80px Arial";
-    ctx.fillText("Press space to start", 80, 80);
-    ctx.strokeText("Press space to start", 80, 80);
+    ctx.fillText("Press space to start", 150, 80);
+    ctx.strokeText("Press space to start", 150, 80);
     
     ctx.fillStyle = 'white';
     ctx.font = "80px Arial";
@@ -295,8 +300,8 @@ function afficheGameOver(ctx) {
 
     ctx.fillStyle = 'white';
     ctx.font = "40px Arial";
-    ctx.fillText("Reload the page to play agin !", 150, 300);
-    ctx.strokeText("Reload the page to play agin !", 150, 300);
+    ctx.fillText("Reload the page to play again !", 150, 300);
+    ctx.strokeText("Reload the page to play again !", 150, 300);
     if (inputState.space) {
         gameState = 'gameOver';
         joueur.x = 0;
@@ -305,6 +310,17 @@ function afficheGameOver(ctx) {
     afficheScore(ctx);
     ctx.restore();
 
+}
+
+function afficheEnd(ctx) {
+    ctx.save();
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.font = "70px Arial";
+    ctx.fillText("Congrats ! You won !", 180, 100);
+    ctx.strokeText("Congrats ! You won !", 180, 100);
+    ctx.restore();
 }
 
 function afficheHiScores() {
@@ -410,7 +426,7 @@ function detecteCollisionJoueurAvecObstaclesEtPieces() {
 }
 
 function detecteCollisionJoueurAvecSortie() {
-    joueur.drawBoundingBox(ctx);
+    //joueur.drawBoundingBox(ctx);
     sortie.drawBoundingBox(ctx);
     if (circRectsOverlap(joueur.x, joueur.y, joueur.l, joueur.h, sortie.x, sortie.y, sortie.r)) {
         joueur.x = 10;
